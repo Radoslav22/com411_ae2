@@ -8,10 +8,10 @@ def welcome():
 
     :return: Does not return anything.
     """
-    # TODO: Your code here
+    title = 'Solar Record Management System'
+    print(len(title) * '-', title, len(title)* '-')
 
-
-def menu():
+    def menu():
     """
     Task 2: Display a menu of options and read the user's response.
 
