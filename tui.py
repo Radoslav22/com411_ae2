@@ -26,8 +26,24 @@ def welcome():
 
     :return: None if invalid selection otherwise an integer corresponding to a valid selection
     """
-    # TODO: Your code here
+    response = 0
+    while (response!= 5):
+        print("What would you like to do?")
+        print("\n\t[1] Load Data")
+        print("\t[2] Process Data")
+        print("\t[3] Visualise Data")
+        print("\t[4] Save Data")
+        print("\t[5] Exit\n")
+        # read the user response
+        response = int(input())
+        if (response > 5):
+            print("\nThere is no option with this number!")
+            break
 
+        if (response <= 5):
+            return response
+        else:
+            return None
 
 def started(operation):
     """
