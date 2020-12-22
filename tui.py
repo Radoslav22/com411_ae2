@@ -9,9 +9,9 @@ def welcome():
     :return: Does not return anything.
     """
     title = 'Solar Record Management System'
-    print(len(title) * '-', title, len(title)* '-')
+    print(len(title) * '-', title, len(title) * '-')
 
-    def menu():
+def menu():
     """
     Task 2: Display a menu of options and read the user's response.
 
@@ -38,11 +38,13 @@ def welcome():
         response = int(input())
         if (response > 5):
             print("\nThere is no option with this number!")
+
+        if (response == 5):
             break
 
         if (response <= 5):
             return response
-        else:
+        elif (response > 5):
             return None
 
 def started(operation):
@@ -56,7 +58,18 @@ def started(operation):
     :param operation: A string indicating the operation being started
     :return: Does not return anything
     """
-    # TODO: Your code here
+    if (operation == 1):
+        operation = "Load data"
+        print(f"{operation} has started.")
+    elif (operation == 2):
+        operation = "Process data"
+        print(f"{operation} has started.")
+    elif (operation == 3):
+        operation = "Visualise Data"
+        print(f"{operation} has started.")
+    elif (operation == 4):
+        operation = "Visualise Data"
+        print(f"{operation} has started.")
 
 
 def completed(operation):
@@ -70,7 +83,18 @@ def completed(operation):
     :param operation: A string indicating the operation being completed
     :return: Does not return anything
     """
-    # TODO: Your code here
+    if (operation == 1):
+        operation = "Load data"
+        print(f"{operation} has completed.")
+    elif (operation == 2):
+        operation = "Process data"
+        print(f"{operation} has completed.")
+    elif (operation == 3):
+        operation = "Visualise Data"
+        print(f"{operation} has completed.")
+    elif (operation == 4):
+        operation = "Visualise Data"
+        print(f"{operation} has completed.")
 
 
 def error(error_msg):
@@ -84,7 +108,9 @@ def error(error_msg):
     :param error_msg: A string containing an error message
     :return: Does not return anything
     """
-    # TODO: Your code here
+
+    print(f"Error! {error_msg}")
+
 
 
 def source_data_path():
@@ -98,8 +124,13 @@ def source_data_path():
 
     :return: None if the file path does not end in 'csv' otherwise return the file path entered by the user
     """
-    # TODO: Your code here
-
+    print("Please enter the file path:")
+    file_path = input()
+    if (file_path != ".csv"):
+        print("Wrong file path!")
+        return None
+    else:
+        return file_path
 
 def process_type():
     """
@@ -117,7 +148,26 @@ def process_type():
 
     :return: None if an invalid selection made otherwise an integer corresponding to a valid option
     """
-    # TODO: Your code here
+    processing_data = 0
+    while (processing_data != 5):
+        print("What would you like to do?")
+        print("\n\t[1] Retrieve entity")
+        print("\t[2] Retrieve entity details")
+        print("\t[3] Categorise entities by type")
+        print("\t[4] Categorise entities by gravity")
+        print("\t[5] Summarise entities by orbit\n")
+        # read the user response
+        processing_data = int(input())
+        if (processing_data > 5):
+            print("\nThere is no option with this number!")
+
+        if (processing_data == 5):
+            break
+
+        if (processing_data <= 5):
+            return processing_data
+        elif (processing_data > 5):
+            return None
 
 
 def entity_name():
@@ -129,7 +179,9 @@ def entity_name():
 
     :return: the name of an entity
     """
-    # TODO: Your code here
+    print("What is the name of the entity:")
+    entity = input()
+    return entity
 
 
 def entity_details():
