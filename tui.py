@@ -286,7 +286,11 @@ def orbits():
 
     :return: a list of entity names
     """
-    # TODO: Your code here
+    entity_names_orbit = []
+    print("Please enter a list of entity names!")
+    names = input()
+    entity_names_orbit.append(names)
+    return entity_names_orbit
 
 
 def visualise():
