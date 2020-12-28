@@ -180,8 +180,8 @@ def entity_name():
     :return: the name of an entity
     """
     print("What is the name of the entity:")
-    entity = input()
-    return entity
+    nameofentity = input()
+    return nameofentity
 
 
 def entity_details():
@@ -195,8 +195,15 @@ def entity_details():
 
     :return: A list containing the name of an entity and a list of column indexes
     """
-    # TODO: Your code here
+    entity_colums = []
 
+    print("Please, enter the name of entity:")
+    entity_input = input()
+    entity_colums.append(entity_input)
+    print("Please enter a list of integer column indexes:")
+    indexes = int(input())
+    entity_colums.append(indexes)
+    return entity_colums
 
 def list_entity(entity, cols=[]):
     """
