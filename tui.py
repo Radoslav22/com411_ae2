@@ -161,8 +161,6 @@ def process_type():
         if (processing_data > 5):
             print("\nThere is no option with this number!")
 
-        if (processing_data == 5):
-            break
 
         if (processing_data <= 5):
             return processing_data
@@ -323,4 +321,13 @@ def save():
 
     :return: None if an invalid selection is made otherwise an integer corresponding to a valid option
     """
-    # TODO: Your code here
+    saving_data = 0
+    while (saving_data == 1):
+        print("What would you like to do?")
+        print("\n\t[1] Export as JSON")
+        saving_data = int(input())
+        if (saving_data == 1):
+            return saving_data
+        else:
+            return None
+            print("Invalid option")
