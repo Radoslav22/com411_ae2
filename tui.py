@@ -149,7 +149,7 @@ def process_type():
     :return: None if an invalid selection made otherwise an integer corresponding to a valid option
     """
     processing_data = 0
-    while (processing_data != 5):
+    while (processing_data <= 5):
         print("What would you like to do?")
         print("\n\t[1] Retrieve entity")
         print("\t[2] Retrieve entity details")
@@ -304,7 +304,19 @@ def visualise():
 
     :return: None if an invalid selection is made otherwise an integer corresponding to a valid option
     """
-    # TODO: Your code here
+    visualise_data = 0
+    while (visualise_data <= 4):
+        print("How would you like to visualise the data?")
+        print("\n\t[1] Entities by type")
+        print("\n\t[2] Entities by gravity")
+        print("\n\t[3] Summary of orbits")
+        print("\n\t[4] Animate gravities\n")
+        visualise_data = int(input())
+        if (visualise_data > 4):
+            print("\nThere is no option with this number!")
+            return None
+        else:
+            return visualise_data
 
 
 def save():
@@ -323,7 +335,7 @@ def save():
     """
     saving_data = 0
     while (saving_data == 1):
-        print("What would you like to do?")
+        print("How would you like to export the file?")
         print("\n\t[1] Export as JSON")
         saving_data = int(input())
         if (saving_data == 1):
