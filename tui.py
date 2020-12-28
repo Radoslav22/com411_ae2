@@ -220,7 +220,7 @@ def list_entity(entity, cols=[]):
     :param cols: A list of integer values that represent column indexes
     :return: does not return anything
     """
-    # TODO: Your code here
+    
 
 
 def list_entities():
@@ -276,7 +276,7 @@ def gravity_range():
     print("Please enter a lower and upper limits for gravity!")
     limits = float(input())
     range.append(limits)
-    return range 
+    return range
 
 
 
