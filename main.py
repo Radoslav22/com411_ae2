@@ -1,22 +1,27 @@
 # Task 17: Import the modules csv, tui and visual
-# TODO: Your code here
+import csv
+import tui
+import visual
+
+
 
 # Task 18: Create an empty list named 'records'.
 # This will be used to store the date read from the source data file.
-# TODO: Your code here
+records = []
 
 
 def run():
 
     # Task 19: Call the function welcome of the module tui.
     # This will display our welcome message when the program is executed.
-    # TODO: Your code here
+    tui.welcome()
 
     while True:
         # Task 20: Using the appropriate function in the module tui, display a menu of options
         # for the different operations that can be performed on the data.
         # Assign the selected option to a suitable local variable
-        # TODO: Your code here
+        operation = tui.menu()
+
 
         # Task 21: Check if the user selected the option for loading data.  If so, then do the following:
         # - Use the appropriate function in the module tui to display a message to indicate that the data loading
@@ -31,7 +36,15 @@ def run():
         # should appropriately handle the case where this is None.
         # - Read each line from the CSV file and add it to the list 'records'. You should appropriately handle the case
         # where the file cannot be found
-        # TODO: Your code here
+        tui.started(operation)
+
+        file= f"data/{tui.source_data_path()}"
+        with open(file) as csv_file:
+            for line in csv_file.readlines():
+                records.append(line.strip())
+        tui.completed(operation)
+        
+
 
         # Task 22: Check if the user selected the option for processing data.  If so, then do the following:
         # - Use the appropriate function in the module tui to display a message to indicate that the data processing

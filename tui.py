@@ -124,13 +124,13 @@ def source_data_path():
 
     :return: None if the file path does not end in 'csv' otherwise return the file path entered by the user
     """
-    print("Please enter the file path:")
-    file_path = input()
-    if (file_path != ".csv"):
+
+    file_path = input("Please enter the file path:")
+    if (file_path == "sol_data.csv"):
+        return file_path
+    else:
         print("Wrong file path!")
         return None
-    else:
-        return file_path
 
 def process_type():
     """
@@ -220,10 +220,11 @@ def list_entity(entity, cols=[]):
     :param cols: A list of integer values that represent column indexes
     :return: does not return anything
     """
-    
 
 
-def list_entities():
+
+
+def list_entities(entities, cols=[]):
     """
     Task 11: Display each entity in entities. Only the data for the specified column indexes will be displayed.
     If no column indexes have been specified, then all the data for an entity will be displayed.
@@ -244,10 +245,11 @@ def list_entities():
     :param cols: A list of integer values that represent column indexes
     :return: Does not return anything
     """
-    # TODO: Your code here
+    for entity in entities:
+        print(entity, line(cols))
 
 
-def list_categories():
+def list_categories(categories):
     """
     Task 12: Display the contents of the dictionary categories.
 
@@ -259,7 +261,7 @@ def list_categories():
     :param categories: A dictionary containing category names and a list of entities that are part of that category
     :return: Does not return anything
     """
-    # TODO: Your code here
+    print(categories)
 
 
 def gravity_range():
