@@ -36,14 +36,16 @@ def run():
         # should appropriately handle the case where this is None.
         # - Read each line from the CSV file and add it to the list 'records'. You should appropriately handle the case
         # where the file cannot be found
-        tui.started(operation)
+        if (operation == 1):
+            tui.started(operation)
 
-        file= f"data/{tui.source_data_path()}"
-        with open(file) as csv_file:
-            for line in csv_file.readlines():
-                records.append(line.strip())
-        tui.completed(operation)
-        
+            file= f"data/{tui.source_data_path()}"
+            with open(file) as csv_file:
+                for row in csv_file.readlines():
+                    records.append(row.strip())
+            tui.completed(operation)
+
+
 
 
         # Task 22: Check if the user selected the option for processing data.  If so, then do the following:
@@ -109,7 +111,14 @@ def run():
         #       - Use the appropriate function in the module tui to list the categories.
         #       - Use the appropriate function in the module tui to indicate that the orbit summary process has
         #       completed.
-        # TODO: Your code here
+        if(operation == 2):
+            tui.started(operation)
+            process= tui.process_type()
+            if (process == 1):
+                print("The entity retrieval process has started.")
+                nameofentity=tui.entity_name()
+                if nameofentity in records:
+                    print (nameofentity)
 
         # Task 23: Check if the user selected the option for visualising data.  If so, then do the following:
         # - Use the appropriate function in the module tui to indicate that the data visualisation operation

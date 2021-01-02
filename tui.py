@@ -26,26 +26,22 @@ def menu():
 
     :return: None if invalid selection otherwise an integer corresponding to a valid selection
     """
-    response = 0
-    while (response!= 5):
-        print("What would you like to do?")
-        print("\n\t[1] Load Data")
-        print("\t[2] Process Data")
-        print("\t[3] Visualise Data")
-        print("\t[4] Save Data")
-        print("\t[5] Exit\n")
+
+
+    print("What would you like to do?")
+    print("\n\t[1] Load Data")
+    print("\t[2] Process Data")
+    print("\t[3] Visualise Data")
+    print("\t[4] Save Data")
+    print("\t[5] Exit\n")
         # read the user response
-        response = int(input())
-        if (response > 5):
-            print("\nThere is no option with this number!")
-
-        if (response == 5):
-            break
-
-        if (response <= 5):
-            return response
-        elif (response > 5):
-            return None
+    response = int(input())
+    if (response > 5):
+        print("\nThere is no option with this number!")
+    if (response <= 5):
+        return response
+    elif (response > 5):
+        return None
 
 def started(operation):
     """
@@ -68,7 +64,7 @@ def started(operation):
         operation = "Visualise Data"
         print(f"{operation} has started.")
     elif (operation == 4):
-        operation = "Visualise Data"
+        operation = "Save Data"
         print(f"{operation} has started.")
 
 
@@ -93,7 +89,7 @@ def completed(operation):
         operation = "Visualise Data"
         print(f"{operation} has completed.")
     elif (operation == 4):
-        operation = "Visualise Data"
+        operation = "Save Data"
         print(f"{operation} has completed.")
 
 
@@ -148,24 +144,23 @@ def process_type():
 
     :return: None if an invalid selection made otherwise an integer corresponding to a valid option
     """
-    processing_data = 0
-    while (processing_data <= 5):
-        print("What would you like to do?")
-        print("\n\t[1] Retrieve entity")
-        print("\t[2] Retrieve entity details")
-        print("\t[3] Categorise entities by type")
-        print("\t[4] Categorise entities by gravity")
-        print("\t[5] Summarise entities by orbit\n")
+
+    print("What would you like to do?")
+    print("\n\t[1] Retrieve entity")
+    print("\t[2] Retrieve entity details")
+    print("\t[3] Categorise entities by type")
+    print("\t[4] Categorise entities by gravity")
+    print("\t[5] Summarise entities by orbit\n")
         # read the user response
-        processing_data = int(input())
-        if (processing_data > 5):
-            print("\nThere is no option with this number!")
+    processing_data = int(input())
+    if (processing_data > 5):
+        print("\nThere is no option with this number!")
 
 
-        if (processing_data <= 5):
-            return processing_data
-        elif (processing_data > 5):
-            return None
+    if (processing_data <= 5):
+        return processing_data
+    elif (processing_data > 5):
+        return None
 
 
 def entity_name():
