@@ -41,9 +41,10 @@ def run():
 
             file= f"data/{tui.source_data_path()}"
             with open(file) as csv_file:
-                for row in csv_file.readlines():
-                    records.append(row.strip())
+                for line in csv_file.readlines():
+                    records.append(line.strip())
             tui.completed(operation)
+
 
 
 
@@ -119,7 +120,31 @@ def run():
                 nameofentity=tui.entity_name()
                 if nameofentity in records:
                     print (nameofentity)
+                else:
+                    print("error")
+            if (process == 2):
+                print("The entity details retrieval process has started.")
 
+                print("The entity details retrieval process has completed.")
+            if (process == 3):
+                print("The entity type categorisation process has started.")
+
+                print("The entity type categorisation process has completed.")
+            if(process == 4):
+                print("The categorisation by entity gravity process has started.")
+                tui.gravity_range()
+                print("The categorisation by entity gravity process has completed.")
+            if(process == 5):
+                print("The orbit summary process has started.")
+                orbits = tui.orbits()
+                name_of_dict = {}
+                for record in records:
+                    if record == orbits:
+                        name_of_dict[orbits]=[record]
+
+
+                tui.list_categories(categories)
+                print("The orbit summary process has completed.")
         # Task 23: Check if the user selected the option for visualising data.  If so, then do the following:
         # - Use the appropriate function in the module tui to indicate that the data visualisation operation
         # has started.
@@ -167,7 +192,25 @@ def run():
         #       - Use the appropriate function in the module visual to animate the gravity.
         #       - Use the appropriate function in the module tui to indicate that the gravity animation visualisation
         #       process has completed.
-        # TODO: Your code here
+        if (operation == 3):
+            tui.started(operation)
+            visualise_data = tui.visualise()
+            if (visualise_data == 1):
+                print("The entity type visualisation process has started.")
+
+                print("The entity type visualisation process has completed.")
+            if (visualise_data == 2):
+                print("The entity gravity visualisation process has started.")
+
+                print("The entity gravity visualisation process has completed.")
+            if (visualise_data == 3):
+                print("The orbit summary visualisation process has started.")
+
+                print("The orbit summary visualisation process has completed.")
+            if (visualise_data == 4):
+                print("The gravity animation visualisation process has started.")
+
+                print("The gravity animation visualisation process has completed.")
 
         # Task 28: Check if the user selected the option for saving data.  If so, then do the following:
         # - Use the appropriate function in the module tui to indicate that the save data operation has started.
@@ -179,15 +222,20 @@ def run():
         # Writer class that inherits from the AbstractWriter class.  You should then use this to write the records to
         # a JSON file using in the following order: all the planets in alphabetical order followed by non-planets 
         # in alphabetical order.
-        # TODO: Your code here
+        if (operation == 4):
+            tui.started(operation)
 
         # Task 29: Check if the user selected the option for exiting.  If so, then do the following:
         # break out of the loop
-        # TODO: Your code here
+        if (operation == 5):
+            break
 
         # Task 30: If the user selected an invalid option then use the appropriate function of the module tui to
         # display an error message
-        # TODO: Your code here
+
+
+        if (operation > 5):
+            tui.error("There is no option with this number!")
 
 
 if __name__ == "__main__":

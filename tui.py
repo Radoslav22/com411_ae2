@@ -153,16 +153,11 @@ def process_type():
     print("\t[5] Summarise entities by orbit\n")
         # read the user response
     processing_data = int(input())
-    if (processing_data > 5):
-        print("\nThere is no option with this number!")
-
-
     if (processing_data <= 5):
         return processing_data
     elif (processing_data > 5):
+        print("\nThere is no option with this number!")
         return None
-
-
 def entity_name():
     """
     Task 8: Read in the name of an entity and return the name.
@@ -310,19 +305,17 @@ def visualise():
 
     :return: None if an invalid selection is made otherwise an integer corresponding to a valid option
     """
-    visualise_data = 0
-    while (visualise_data <= 4):
-        print("How would you like to visualise the data?")
-        print("\n\t[1] Entities by type")
-        print("\n\t[2] Entities by gravity")
-        print("\n\t[3] Summary of orbits")
-        print("\n\t[4] Animate gravities\n")
-        visualise_data = int(input())
-        if (visualise_data > 4):
-            print("\nThere is no option with this number!")
-            return None
-        else:
-            return visualise_data
+    print("How would you like to visualise the data?")
+    print("\n\t[1] Entities by type")
+    print("\n\t[2] Entities by gravity")
+    print("\n\t[3] Summary of orbits")
+    print("\n\t[4] Animate gravities\n")
+    visualise_data = int(input())
+    if (visualise_data > 4):
+        print("\nThere is no option with this number!")
+        return None
+    else:
+        return visualise_data
 
 
 def save():
