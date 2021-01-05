@@ -119,21 +119,26 @@ def run():
             if (process == 1):
                 tui.started("The entity retrieval process")
                 nameofentity=tui.entity_name()
-                if nameofentity in records:
-                    print (nameofentity)
-                
+                if f"{nameofentity}" in records:
+                    print (nameofentity.row)
+
                 tui.completed("The entity retrieval process")
             if (process == 2):
                 tui.started("The entity details retrieval process")
-
+                entity_list = tui.entity_details()
+                tui.list_entity(entity_list[0],entity_list[1])
                 tui.completed("The entity details retrieval process")
             if (process == 3):
                 tui.started("The entity type categorisation process")
+                for record in records:
 
                 tui.completed("The entity type categorisation process")
             if(process == 4):
                 tui.started("The categorisation by entity gravity process")
                 tui.gravity_range()
+                gravity_categories = {}
+                for record in records:
+                    if line[0]
                 tui.completed("The categorisation by entity gravity process")
             if(process == 5):
                 tui.started("The orbit summary process")
@@ -199,19 +204,19 @@ def run():
             visualise_data = tui.visualise()
             if (visualise_data == 1):
                 tui.started("The entity type visualisation process")
-
+                visual.entities_pie(categories)
                 tui.completed("The entity type visualisation process")
             if (visualise_data == 2):
                 tui.started("The entity gravity visualisation process")
-
+                visual.entities_bar(categories)
                 tui.completed("The entity gravity visualisation process")
             if (visualise_data == 3):
                 tui.started("The orbit summary visualisation process")
-
+                visual.orbits(summary)
                 tui.completed("The orbit summary visualisation process")
             if (visualise_data == 4):
                 tui.started("The gravity animation visualisation process")
-
+                visual.gravity_animation(categories)
                 tui.completed("The gravity animation visualisation process")
             tui.completed("The data visualisation operation")
 
