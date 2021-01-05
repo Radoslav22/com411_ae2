@@ -46,9 +46,10 @@ def orbits(summary):
     :return: Does not return anything
     """
     fig,(ax1,ax2)=plt.suplots(1,2)
-    ax1.bar(summary["orbited planet"]len(['small']))
-    ax2.bar(summary["orbited planet"]len(['large'])
+    ax1.bar(summary["orbited planet"]['small'])
+    ax2.bar(summary["orbited planet"]['large'])
     plt.show()
+    pass
 
 def gravity_animation(categories):
     """

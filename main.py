@@ -131,14 +131,15 @@ def run():
             if (process == 3):
                 tui.started("The entity type categorisation process")
                 for record in records:
-
+                    pass
                 tui.completed("The entity type categorisation process")
             if(process == 4):
                 tui.started("The categorisation by entity gravity process")
                 tui.gravity_range()
                 gravity_categories = {}
                 for record in records:
-                    if line[0]
+                    if line[0]:
+                        pass
                 tui.completed("The categorisation by entity gravity process")
             if(process == 5):
                 tui.started("The orbit summary process")
@@ -147,7 +148,7 @@ def run():
                 for record in records:
                     if record == "orbits":
                         categories[planet_orbited][category]
-
+                        pass
 
                 tui.list_categories(categories)
                 tui.completed("The orbit summary process")
@@ -232,7 +233,7 @@ def run():
         # in alphabetical order.
         if (operation == 4):
             tui.started("Save data operation")
-
+            tui.save()
             tui.completed("Save data operation")
 
         # Task 29: Check if the user selected the option for exiting.  If so, then do the following:

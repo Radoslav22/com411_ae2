@@ -310,13 +310,12 @@ def save():
 
     :return: None if an invalid selection is made otherwise an integer corresponding to a valid option
     """
-    saving_data = 0
-    while (saving_data == 1):
-        print("How would you like to export the file?")
-        print("\n\t[1] Export as JSON")
-        saving_data = int(input())
-        if (saving_data == 1):
-            return saving_data
-        else:
-            return None
-            print("Invalid option")
+
+    print("How would you like to export the file?")
+    print("\n\t[1] Export as JSON")
+    saving_data = int(input())
+    if (saving_data == 1):
+        return saving_data
+    else:
+        return None
+        print("Invalid option")
