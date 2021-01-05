@@ -153,6 +153,7 @@ def run():
                 tui.list_categories(categories)
                 tui.completed("The orbit summary process")
             tui.completed("Processing data")
+
         # Task 23: Check if the user selected the option for visualising data.  If so, then do the following:
         # - Use the appropriate function in the module tui to indicate that the data visualisation operation
         # has started.
@@ -247,6 +248,7 @@ def run():
 
         if (operation > 5):
             tui.error("There is no option with this number!")
+
 
 
 if __name__ == "__main__":

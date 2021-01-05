@@ -133,8 +133,8 @@ def process_type():
     processing_data = int(input())
     if (processing_data <= 5):
         return processing_data
-    elif (processing_data > 5):
-        print("\nThere is no option with this number!")
+    else:
+        print("There is no option with this number")
         return None
 def entity_name():
     """
@@ -285,9 +285,9 @@ def visualise():
     """
     print("How would you like to visualise the data?")
     print("\n\t[1] Entities by type")
-    print("\n\t[2] Entities by gravity")
-    print("\n\t[3] Summary of orbits")
-    print("\n\t[4] Animate gravities\n")
+    print("\t[2] Entities by gravity")
+    print("\t[3] Summary of orbits")
+    print("\t[4] Animate gravities\n")
     visualise_data = int(input())
     if (visualise_data > 4):
         print("\nThere is no option with this number!")
