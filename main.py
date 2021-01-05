@@ -37,13 +37,14 @@ def run():
         # - Read each line from the CSV file and add it to the list 'records'. You should appropriately handle the case
         # where the file cannot be found
         if (operation == 1):
-            tui.started(operation)
+            tui.started("Loading data")
 
             file= f"data/{tui.source_data_path()}"
-            with open(file) as csv_file:
+            with open(file, 'r') as csv_file:
                 for line in csv_file.readlines():
                     records.append(line.strip())
-            tui.completed(operation)
+            tui.completed("Loading data")
+
 
 
 
@@ -113,38 +114,39 @@ def run():
         #       - Use the appropriate function in the module tui to indicate that the orbit summary process has
         #       completed.
         if(operation == 2):
-            tui.started(operation)
+            tui.started("Processing data")
             process= tui.process_type()
             if (process == 1):
-                print("The entity retrieval process has started.")
+                tui.started("The entity retrieval process")
                 nameofentity=tui.entity_name()
                 if nameofentity in records:
                     print (nameofentity)
-                else:
-                    print("error")
+                
+                tui.completed("The entity retrieval process")
             if (process == 2):
-                print("The entity details retrieval process has started.")
+                tui.started("The entity details retrieval process")
 
-                print("The entity details retrieval process has completed.")
+                tui.completed("The entity details retrieval process")
             if (process == 3):
-                print("The entity type categorisation process has started.")
+                tui.started("The entity type categorisation process")
 
-                print("The entity type categorisation process has completed.")
+                tui.completed("The entity type categorisation process")
             if(process == 4):
-                print("The categorisation by entity gravity process has started.")
+                tui.started("The categorisation by entity gravity process")
                 tui.gravity_range()
-                print("The categorisation by entity gravity process has completed.")
+                tui.completed("The categorisation by entity gravity process")
             if(process == 5):
-                print("The orbit summary process has started.")
+                tui.started("The orbit summary process")
                 orbits = tui.orbits()
-                name_of_dict = {}
+                categories = {}
                 for record in records:
-                    if record == orbits:
-                        name_of_dict[orbits]=[record]
+                    if record == "orbits":
+                        categories[planet_orbited][category]
 
 
                 tui.list_categories(categories)
-                print("The orbit summary process has completed.")
+                tui.completed("The orbit summary process")
+            tui.completed("Processing data")
         # Task 23: Check if the user selected the option for visualising data.  If so, then do the following:
         # - Use the appropriate function in the module tui to indicate that the data visualisation operation
         # has started.
@@ -193,24 +195,25 @@ def run():
         #       - Use the appropriate function in the module tui to indicate that the gravity animation visualisation
         #       process has completed.
         if (operation == 3):
-            tui.started(operation)
+            tui.started("The data visualisation operation")
             visualise_data = tui.visualise()
             if (visualise_data == 1):
-                print("The entity type visualisation process has started.")
+                tui.started("The entity type visualisation process")
 
-                print("The entity type visualisation process has completed.")
+                tui.completed("The entity type visualisation process")
             if (visualise_data == 2):
-                print("The entity gravity visualisation process has started.")
+                tui.started("The entity gravity visualisation process")
 
-                print("The entity gravity visualisation process has completed.")
+                tui.completed("The entity gravity visualisation process")
             if (visualise_data == 3):
-                print("The orbit summary visualisation process has started.")
+                tui.started("The orbit summary visualisation process")
 
-                print("The orbit summary visualisation process has completed.")
+                tui.completed("The orbit summary visualisation process")
             if (visualise_data == 4):
-                print("The gravity animation visualisation process has started.")
+                tui.started("The gravity animation visualisation process")
 
-                print("The gravity animation visualisation process has completed.")
+                tui.completed("The gravity animation visualisation process")
+            tui.completed("The data visualisation operation")
 
         # Task 28: Check if the user selected the option for saving data.  If so, then do the following:
         # - Use the appropriate function in the module tui to indicate that the save data operation has started.
@@ -223,7 +226,9 @@ def run():
         # a JSON file using in the following order: all the planets in alphabetical order followed by non-planets 
         # in alphabetical order.
         if (operation == 4):
-            tui.started(operation)
+            tui.started("Save data operation")
+
+            tui.completed("Save data operation")
 
         # Task 29: Check if the user selected the option for exiting.  If so, then do the following:
         # break out of the loop

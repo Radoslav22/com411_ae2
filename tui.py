@@ -54,18 +54,7 @@ def started(operation):
     :param operation: A string indicating the operation being started
     :return: Does not return anything
     """
-    if (operation == 1):
-        operation = "Load data"
-        print(f"{operation} has started.")
-    elif (operation == 2):
-        operation = "Process data"
-        print(f"{operation} has started.")
-    elif (operation == 3):
-        operation = "Visualise Data"
-        print(f"{operation} has started.")
-    elif (operation == 4):
-        operation = "Save Data"
-        print(f"{operation} has started.")
+    print(f"{operation} has started.")
 
 
 def completed(operation):
@@ -79,18 +68,7 @@ def completed(operation):
     :param operation: A string indicating the operation being completed
     :return: Does not return anything
     """
-    if (operation == 1):
-        operation = "Load data"
-        print(f"{operation} has completed.")
-    elif (operation == 2):
-        operation = "Process data"
-        print(f"{operation} has completed.")
-    elif (operation == 3):
-        operation = "Visualise Data"
-        print(f"{operation} has completed.")
-    elif (operation == 4):
-        operation = "Save Data"
-        print(f"{operation} has completed.")
+    print(f"{operation} has completed.")
 
 
 def error(error_msg):
