@@ -11,6 +11,7 @@ def welcome():
     title = 'Solar Record Management System'
     print(len(title) * '-', title, len(title) * '-')
 
+
 def menu():
     """
     Task 2: Display a menu of options and read the user's response.
@@ -27,21 +28,20 @@ def menu():
     :return: None if invalid selection otherwise an integer corresponding to a valid selection
     """
 
-
     print("What would you like to do?")
     print("\n\t[1] Load Data")
     print("\t[2] Process Data")
     print("\t[3] Visualise Data")
     print("\t[4] Save Data")
     print("\t[5] Exit\n")
-        # read the user response
+    # read the user response
     response = int(input())
-    if (response > 5):
-        print("\nThere is no option with this number!")
-    if (response <= 5):
-        return response
-    elif (response > 5):
+    if response > 5:
+        error("There is no option with this number!")
         return None
+    else:
+        return response
+
 
 def started(operation):
     """
@@ -83,8 +83,7 @@ def error(error_msg):
     :return: Does not return anything
     """
 
-    print(f"Error! {error_msg}")
-
+    print(f"Error! {error_msg}.")
 
 
 def source_data_path():
@@ -99,12 +98,15 @@ def source_data_path():
     :return: None if the file path does not end in 'csv' otherwise return the file path entered by the user
     """
 
-    file_path = input("Please enter the file path:")
-    if (file_path == "sol_data.csv"):
+    file_path = input("Please enter the file name:")
+    ext = file_path[-4:]
+
+    if ext == ".csv":
         return file_path
     else:
-        print("Wrong file path!")
+        error("Wrong file extension!")
         return None
+
 
 def process_type():
     """
@@ -129,13 +131,15 @@ def process_type():
     print("\t[3] Categorise entities by type")
     print("\t[4] Categorise entities by gravity")
     print("\t[5] Summarise entities by orbit\n")
-        # read the user response
+    # read the user response
     processing_data = int(input())
-    if (processing_data <= 5):
+    if processing_data <= 5:
         return processing_data
     else:
-        print("There is no option with this number")
+        error("There is no option with this number")
         return None
+
+
 def entity_name():
     """
     Task 8: Read in the name of an entity and return the name.
@@ -146,8 +150,8 @@ def entity_name():
     :return: the name of an entity
     """
     print("What is the name of the entity:")
-    nameofentity = input()
-    return nameofentity
+    name_of_entity = input()
+    return name_of_entity
 
 
 def entity_details():
@@ -161,15 +165,18 @@ def entity_details():
 
     :return: A list containing the name of an entity and a list of column indexes
     """
-    entity_colums = []
+    entity_cols = []
 
-    print("Please, enter the name of entity:")
-    entity_input = input()
-    entity_colums.append(entity_input)
+    entity_input = entity_name()
+    entity_cols.append(entity_input)
     print("Please enter a list of integer column indexes:")
-    indexes = int(input())
-    entity_colums.append(indexes)
-    return entity_colums
+    indexes = input().split(",")
+    indexes_int = []
+    for index in indexes:
+        indexes_int.append(int(index))
+    entity_cols.append(indexes_int)
+    return entity_cols
+
 
 def list_entity(entity, cols=[]):
     """
@@ -188,8 +195,17 @@ def list_entity(entity, cols=[]):
     :param cols: A list of integer values that represent column indexes
     :return: does not return anything
     """
-
-
+    if cols:
+        entity_data = []
+        for col in cols:
+            if entity[col]:
+                entity_data.append(entity[col])
+        if entity_data:
+            return entity_data
+        else:
+            return None
+    else:
+        return entity
 
 
 def list_entities(entities, cols=[]):
@@ -213,8 +229,12 @@ def list_entities(entities, cols=[]):
     :param cols: A list of integer values that represent column indexes
     :return: Does not return anything
     """
+    entities_data = []
     for entity in entities:
-        print(entity, line(cols))
+        entities_data.append(list_entity(entity, cols))
+
+    return entities_data
+
 
 
 def list_categories(categories):
@@ -229,7 +249,8 @@ def list_categories(categories):
     :param categories: A dictionary containing category names and a list of entities that are part of that category
     :return: Does not return anything
     """
-    print(categories)
+    for key, value in categories.items():
+        print(f"{key}:{value}")
 
 
 def gravity_range():
@@ -247,7 +268,6 @@ def gravity_range():
     limits = float(input())
     range.append(limits)
     return range
-
 
 
 def orbits():
