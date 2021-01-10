@@ -195,16 +195,27 @@ def list_entity(entity, cols=[]):
     :param cols: A list of integer values that represent column indexes
     :return: does not return anything
     """
+    # Check if cols is not equal to nothing
     if cols:
+        # empty list
         entity_data = []
+        # loop for each column in columns
         for col in cols:
+            # Check if entity has columns
             if entity[col]:
+                # appending to the list entity_data
                 entity_data.append(entity[col])
+        # check if the list is not empty
         if entity_data:
+            # return the list with the data in it
             return entity_data
+        # if the list is empty
         else:
+            # return nothing
             return None
+    # if the cols is equal to nothing
     else:
+        # return the whole entity
         return entity
 
 
