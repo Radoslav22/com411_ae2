@@ -236,7 +236,6 @@ def list_entities(entities, cols=[]):
     return entities_data
 
 
-
 def list_categories(categories):
     """
     Task 12: Display the contents of the dictionary categories.
@@ -309,7 +308,7 @@ def visualise():
     print("\t[3] Summary of orbits")
     print("\t[4] Animate gravities\n")
     visualise_data = int(input())
-    if (visualise_data > 4):
+    if visualise_data > 4:
         print("\nThere is no option with this number!")
         return None
     else:
@@ -334,8 +333,8 @@ def save():
     print("How would you like to export the file?")
     print("\n\t[1] Export as JSON")
     saving_data = int(input())
-    if (saving_data == 1):
+    if saving_data == 1:
         return saving_data
     else:
         return None
-        print("Invalid option")
+        error("Invalid option")
