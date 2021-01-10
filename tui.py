@@ -9,6 +9,7 @@ def welcome():
     :return: Does not return anything.
     """
     title = 'Solar Record Management System'
+    # Displaying the title surrounded by dashes
     print(len(title) * '-', title, len(title) * '-')
 
 
@@ -27,19 +28,22 @@ def menu():
 
     :return: None if invalid selection otherwise an integer corresponding to a valid selection
     """
-
+    # Displaying the main menu
     print("What would you like to do?")
     print("\n\t[1] Load Data")
     print("\t[2] Process Data")
     print("\t[3] Visualise Data")
     print("\t[4] Save Data")
     print("\t[5] Exit\n")
-    # read the user response
+    # read the user response(integer)
     response = int(input())
+    # Check if the response from the user is bigger than 5
     if response > 5:
+        # Displaying error and return nothing
         error("There is no option with this number!")
         return None
     else:
+        # Otherwise return the response from the user as an integer
         return response
 
 
@@ -54,6 +58,7 @@ def started(operation):
     :param operation: A string indicating the operation being started
     :return: Does not return anything
     """
+    # Display the message
     print(f"{operation} has started.")
 
 
@@ -68,6 +73,7 @@ def completed(operation):
     :param operation: A string indicating the operation being completed
     :return: Does not return anything
     """
+    # Display the message
     print(f"{operation} has completed.")
 
 
@@ -82,7 +88,7 @@ def error(error_msg):
     :param error_msg: A string containing an error message
     :return: Does not return anything
     """
-
+    # Display the message
     print(f"Error! {error_msg}.")
 
 
@@ -97,13 +103,16 @@ def source_data_path():
 
     :return: None if the file path does not end in 'csv' otherwise return the file path entered by the user
     """
-
+    # Display a message and asking for the user response
     file_path = input("Please enter the file name:")
+    # reading the last 4 character of the user response
     ext = file_path[-4:]
-
+    # check if the user response end with ".csv"
     if ext == ".csv":
+        # return the user response
         return file_path
     else:
+        # Display error and return nothing
         error("Wrong file extension!")
         return None
 
@@ -124,18 +133,21 @@ def process_type():
 
     :return: None if an invalid selection made otherwise an integer corresponding to a valid option
     """
-
+    # Display menu for Process Data
     print("What would you like to do?")
     print("\n\t[1] Retrieve entity")
     print("\t[2] Retrieve entity details")
     print("\t[3] Categorise entities by type")
     print("\t[4] Categorise entities by gravity")
     print("\t[5] Summarise entities by orbit\n")
-    # read the user response
+    # read the user response(integer)
     processing_data = int(input())
+    # Check if the user response is less than or equal to 5
     if processing_data <= 5:
+        # return the user response as an integer
         return processing_data
     else:
+        # Display error message and return nothing
         error("There is no option with this number")
         return None
 
@@ -149,8 +161,11 @@ def entity_name():
 
     :return: the name of an entity
     """
+    # Display a message
     print("What is the name of the entity:")
+    # Reading the user response
     name_of_entity = input()
+    # return the user response
     return name_of_entity
 
 
@@ -165,16 +180,25 @@ def entity_details():
 
     :return: A list containing the name of an entity and a list of column indexes
     """
+    # empty list
     entity_cols = []
-
+    # using the input from another function
     entity_input = entity_name()
+    # append into the list
     entity_cols.append(entity_input)
+    # Display message
     print("Please enter a list of integer column indexes:")
+    # Read and split by comma the user response
     indexes = input().split(",")
+    # empty list for the column indexes(integer)
     indexes_int = []
+    # loop for every index from the user response(indexes)
     for index in indexes:
+        # append the user response index as an integer in the list indexes_int
         indexes_int.append(int(index))
+    # Combine the entity name and the cols list into one list
     entity_cols.append(indexes_int)
+    # return the list e.g. ["Entity", [0,1,2,3]]
     return entity_cols
 
 
@@ -196,6 +220,8 @@ def list_entity(entity, cols=[]):
     :return: does not return anything
     """
     # Check if cols is not equal to nothing
+    if cols is None:
+        cols = []
     if cols:
         # empty list
         entity_data = []
@@ -240,10 +266,13 @@ def list_entities(entities, cols=[]):
     :param cols: A list of integer values that represent column indexes
     :return: Does not return anything
     """
+    # empty list
     entities_data = []
+    # loop for entity in entities
     for entity in entities:
+        # append into the list using the list_entity function
         entities_data.append(list_entity(entity, cols))
-
+    # return the list about entities data
     return entities_data
 
 
@@ -298,10 +327,15 @@ def orbits():
 
     :return: a list of entity names
     """
+    # empty list
     entity_names_orbit = []
+    # Display message
     print("Please enter a list of entity names!")
+    # Reading the user response
     names = input()
+    # append the user response into the list
     entity_names_orbit.append(names)
+    # return the list
     return entity_names_orbit
 
 
@@ -320,16 +354,20 @@ def visualise():
 
     :return: None if an invalid selection is made otherwise an integer corresponding to a valid option
     """
+    # Display menu for Visualise Data
     print("How would you like to visualise the data?")
     print("\n\t[1] Entities by type")
     print("\t[2] Entities by gravity")
     print("\t[3] Summary of orbits")
     print("\t[4] Animate gravities\n")
+    # reading the user response(integer)
     visualise_data = int(input())
+    # Check if the user response is bigger than 4 printing error message and return nothing
     if visualise_data > 4:
-        print("\nThere is no option with this number!")
+        error("\nThere is no option with this number!")
         return None
     else:
+        # return the user response as an integer
         return visualise_data
 
 
@@ -347,12 +385,15 @@ def save():
 
     :return: None if an invalid selection is made otherwise an integer corresponding to a valid option
     """
-
+    # Display menu for Save data
     print("How would you like to export the file?")
     print("\n\t[1] Export as JSON")
+    # Read the user response as an integer
     saving_data = int(input())
+    # Check if the user response is equal to 1 return the response
     if saving_data == 1:
         return saving_data
     else:
-        return None
+        # Otherwise return nothing and displaying error message
         error("Invalid option")
+        return None
