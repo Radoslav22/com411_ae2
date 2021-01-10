@@ -10,7 +10,13 @@ def entities_pie(categories):
     :param categories: A dictionary with planets and non-planets
     :return: Does not return anything
     """
-    plt.pie(categories['planets'], categories['non-planets'], labels=("Planets", "Non-planets"))
+    labels = []
+    sizes = []
+    for key, value in categories.items():
+        labels.append(key)
+        sizes.append(len(value))
+    plt.title("Planets vs Non-planets")
+    plt.pie(sizes, labels=labels)
     plt.show()
 
 
@@ -24,9 +30,13 @@ def entities_bar(categories):
     :return: Does not return anything
     """
 
-    keys = categories.keys()
-    values = categories.values()
-    plt.bar(keys, values)
+    labels = []
+    sizes = []
+    for key, value in categories.items():
+        labels.append(key)
+        sizes.append(len(value))
+    plt.bar(sizes, labels=labels)
+    plt.show()
 
 
 def orbits(summary):

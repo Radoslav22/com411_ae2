@@ -154,7 +154,7 @@ def run():
             # Check if the selected option from the Process data menu is 3
             if process == 3:
                 tui.started("The entity type categorisation process")
-                categories = {}
+                type_categories = {}
                 planets = []
                 non_planets = []
                 for record in records:
@@ -162,16 +162,15 @@ def run():
                         planets.append(record[0])
                     elif record[1] == "FALSE":
                         non_planets.append(record[0])
-                categories['planets'] = planets
-                categories['non-planets'] = non_planets
-                tui.list_categories(categories)
+                type_categories['planets'] = planets
+                type_categories['non-planets'] = non_planets
+                tui.list_categories(type_categories)
                 tui.completed("The entity type categorisation process")
 
             # Check if the selected option from the Process data menu is 4
             if process == 4:
                 tui.started("The categorisation by entity gravity process")
                 up_low_limits = tui.gravity_range()
-                up_low_limits = list[up_low_limits]
                 up_limit = up_low_limits[0]
                 low_limit = up_low_limits[1]
                 gravity_categories = {}
@@ -195,7 +194,7 @@ def run():
                         # categories[planet_orbited][category]
                         pass
 
-                tui.list_categories(categories)
+                # tui.list_categories(categories)
                 tui.completed("The orbit summary process")
             tui.completed("Processing data")
 
@@ -255,7 +254,7 @@ def run():
             # Check if the selected option from the Visualise data menu is 1
             if visualise_data == 1:
                 tui.started("The entity type visualisation process")
-                # visual.entities_pie(categories)
+                visual.entities_pie(type_categories)
                 tui.completed("The entity type visualisation process")
 
             # Check if the selected option from the Visualise data menu is 2
