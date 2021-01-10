@@ -32,14 +32,16 @@ def run():
         # should appropriately handle the case where this is None.
         # - Read each line from the CSV file and add it to the list 'records'. You should appropriately handle the case
         # where the file cannot be found
+
+        # Check if the selected option from the main menu is 1(Load Data)
         if operation == 1:
             tui.started("Loading data")
 
             file = f"data/{tui.source_data_path()}"
             with open(file, 'r') as csv_file:
                 csv_reader = csv.reader(csv_file, delimiter=",")
+                # Loop for row in csv file append the row in list records
                 for row in csv_reader:
-                    print(row[0])
                     records.append(row)
 
             tui.completed("Loading data")
@@ -106,9 +108,13 @@ def run():
         #       - Use the appropriate function in the module tui to list the categories.
         #       - Use the appropriate function in the module tui to indicate that the orbit summary process has
         #       completed.
+
+        # Check if the selected option from the main menu is 2(Process Data)
         if operation == 2:
             tui.started("Processing data")
             process = tui.process_type()
+
+            # Check if the selected option from the Process data menu is 1
             if process == 1:
                 tui.started("The entity retrieval process")
                 entity_name = tui.entity_name()
@@ -125,27 +131,34 @@ def run():
                     tui.error("Entity not found!")
 
             # Process data/ entity details
+            # Check if the selected option from the Process data menu is 2
             if process == 2:
                 tui.started("The entity details retrieval process")
                 entity_list = tui.entity_details()
                 entity_name = entity_list[0]
                 entity_indexes = entity_list[1]
                 entity_details = []
-                # Searching for the entity
+                # Searching for the entity in records list
                 for record in records:
                     if entity_name == record[0]:
                         entity_details = record
 
+                # if entity details are found display the entity details
                 if entity_details:
                     print(tui.list_entity(entity_details, entity_indexes))
                     tui.completed("The entity details retrieval process")
                 else:
+                    # Otherwise error message
                     tui.error("Entity not found!")
+
+            # Check if the selected option from the Process data menu is 3
             if process == 3:
                 tui.started("The entity type categorisation process")
                 for record in records:
                     pass
                 tui.completed("The entity type categorisation process")
+
+            # Check if the selected option from the Process data menu is 4
             if process == 4:
                 tui.started("The categorisation by entity gravity process")
                 tui.gravity_range()
@@ -154,6 +167,8 @@ def run():
                     if record[0]:
                         pass
                 tui.completed("The categorisation by entity gravity process")
+
+            # Check if the selected option from the Process data menu is 5
             if process == 5:
                 tui.started("The orbit summary process")
                 orbits = tui.orbits()
@@ -214,21 +229,31 @@ def run():
         #       - Use the appropriate function in the module visual to animate the gravity.
         #       - Use the appropriate function in the module tui to indicate that the gravity animation visualisation
         #       process has completed.
+
+        # Check if the selected option from the main menu is 3(Visualise Data)
         if operation == 3:
             tui.started("The data visualisation operation")
             visualise_data = tui.visualise()
+
+            # Check if the selected option from the Visualise data menu is 1
             if visualise_data == 1:
                 tui.started("The entity type visualisation process")
                 # visual.entities_pie(categories)
                 tui.completed("The entity type visualisation process")
+
+            # Check if the selected option from the Visualise data menu is 2
             if visualise_data == 2:
                 tui.started("The entity gravity visualisation process")
                 # visual.entities_bar(categories)
                 tui.completed("The entity gravity visualisation process")
+
+            # Check if the selected option from the Visualise data menu is 3
             if visualise_data == 3:
                 tui.started("The orbit summary visualisation process")
                 # visual.orbits(summary)
                 tui.completed("The orbit summary visualisation process")
+
+            # Check if the selected option from the Visualise data menu is 4
             if visualise_data == 4:
                 tui.started("The gravity animation visualisation process")
                 # visual.gravity_animation(categories)
@@ -245,6 +270,8 @@ def run():
         # Writer class that inherits from the AbstractWriter class.  You should then use this to write the records to
         # a JSON file using in the following order: all the planets in alphabetical order followed by non-planets 
         # in alphabetical order.
+
+        # Check if the selected option from the main menu is 4(Save Data)
         if operation == 4:
             tui.started("Save data operation")
             tui.save()
@@ -252,12 +279,16 @@ def run():
 
         # Task 29: Check if the user selected the option for exiting.  If so, then do the following:
         # break out of the loop
+
+        # Check if the selected option from the main menu is 5(Exit)
         if operation == 5:
+            # break out of the loop
             break
 
         # Task 30: If the user selected an invalid option then use the appropriate function of the module tui to
         # display an error message
 
+        # Check if the response is bigger than 5 print error message
         if operation > 5:
             tui.error("There is no option with this number!")
 
