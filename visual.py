@@ -10,11 +10,15 @@ def entities_pie(categories):
     :param categories: A dictionary with planets and non-planets
     :return: Does not return anything
     """
+    # two empty list
     labels = []
     sizes = []
+    # loop the dictionary items
     for key, value in categories.items():
+        # append in lists
         labels.append(key)
         sizes.append(len(value))
+    # title of the Pie chart
     plt.title("Planets vs Non-planets")
     plt.pie(sizes, labels=labels)
     plt.show()
@@ -29,12 +33,14 @@ def entities_bar(categories):
     :param categories: A dictionary with entities categorised into 'low', 'medium' and 'high' gravity
     :return: Does not return anything
     """
-
+    # two empty list
     labels = []
     sizes = []
+    # loop the dictionary items
     for key, value in categories.items():
         labels.append(key)
         sizes.append(len(value))
+    # title of the Bar chart
     plt.bar(sizes, labels=labels)
     plt.show()
 
