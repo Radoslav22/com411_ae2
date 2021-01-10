@@ -10,8 +10,10 @@ def entities_pie(categories):
     :param categories: A dictionary with planets and non-planets
     :return: Does not return anything
     """
-    plt.pie(categories['planets'],categories['non-planets'], labels=("Planets","Non-planets"))
+    plt.pie(categories['planets'], categories['non-planets'], labels=("Planets", "Non-planets"))
     plt.show()
+
+
 def entities_bar(categories):
     """
     Task 25: Display a single subplot that shows a bar chart for categories.
@@ -45,11 +47,12 @@ def orbits(summary):
     :param summary: A dictionary containing the "small" and "large" entities for each orbited planet.
     :return: Does not return anything
     """
-    fig,(ax1,ax2)=plt.suplots(1,2)
+    fig, (ax1, ax2) = plt.suplots(1, 2)
     ax1.bar(summary["orbited planet"]['small'])
     ax2.bar(summary["orbited planet"]['large'])
     plt.show()
     pass
+
 
 def gravity_animation(categories):
     """
@@ -61,4 +64,3 @@ def gravity_animation(categories):
     :param categories: A dictionary containing "low", "medium" and "high" gravity entities
     :return: Does not return anything
     """
-

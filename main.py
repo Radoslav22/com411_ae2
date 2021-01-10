@@ -154,25 +154,42 @@ def run():
             # Check if the selected option from the Process data menu is 3
             if process == 3:
                 tui.started("The entity type categorisation process")
+                categories = {}
+                planets = []
+                non_planets = []
                 for record in records:
-                    pass
+                    if record[1] == "TRUE":
+                        planets.append(record[0])
+                    elif record[1] == "FALSE":
+                        non_planets.append(record[0])
+                categories['planets'] = planets
+                categories['non-planets'] = non_planets
+                tui.list_categories(categories)
                 tui.completed("The entity type categorisation process")
 
             # Check if the selected option from the Process data menu is 4
             if process == 4:
                 tui.started("The categorisation by entity gravity process")
-                tui.gravity_range()
+                up_low_limits = tui.gravity_range()
+                up_low_limits = list[up_low_limits]
+                up_limit = up_low_limits[0]
+                low_limit = up_low_limits[1]
                 gravity_categories = {}
                 for record in records:
-                    if record[0]:
-                        pass
+                    if record[8] < low_limit:
+                        gravity_categories['low'] = record[0]
+                    elif (record[8] > low_limit) and (record[8] < up_limit):
+                        gravity_categories['medium'] = record[0]
+                    elif record[8] > up_limit:
+                        gravity_categories['high'] = record[0]
+                tui.list_categories(gravity_categories)
                 tui.completed("The categorisation by entity gravity process")
 
             # Check if the selected option from the Process data menu is 5
             if process == 5:
                 tui.started("The orbit summary process")
                 orbits = tui.orbits()
-                categories = {}
+                orbit_categories = {}
                 for record in records:
                     if record == "orbits":
                         # categories[planet_orbited][category]
