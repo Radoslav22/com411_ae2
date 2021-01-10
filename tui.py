@@ -262,11 +262,18 @@ def gravity_range():
 
     :return: a tuple with the lower and upper limits
     """
-    range = ()
+    # empty list
+    up_low_limit = []
     print("Please enter a lower and upper limits for gravity!")
-    limits = float(input())
-    range.append(limits)
-    return range
+    # output from user and split using comma
+    limits = input().split(",")
+    # loop for every element in limits appending in the list as float
+    for index in limits:
+        up_low_limit.append(float(index))
+    # converting from list to tuple
+    up_low_limit = tuple(up_low_limit)
+    # return a tuple
+    return up_low_limit
 
 
 def orbits():
