@@ -65,11 +65,18 @@ def orbits(summary):
     :param summary: A dictionary containing the "small" and "large" entities for each orbited planet.
     :return: Does not return anything
     """
+    labels = []
+    size = []
+
+    for key,value in summary.items():
+        labels.append(key)
+        size.append(len(value))
+
     fig, (ax1, ax2) = plt.suplots(1, 2)
-    ax1.bar(summary["orbited planet"]['small'])
-    ax2.bar(summary["orbited planet"]['large'])
+    ax1.bar(labels, size, align='center')
+    ax2.bar(labels, size, align='center')
     plt.show()
-    pass
+
 
 
 def gravity_animation(categories):
@@ -97,4 +104,3 @@ def gravity_animation(categories):
     simple_animation = animation.FuncAnimation(labels, sizes, frames=100, interval=100)
 
     plt.show()
-    pass

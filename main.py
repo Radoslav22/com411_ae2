@@ -290,7 +290,7 @@ def run():
             # Check if the selected option from the Visualise data menu is 3
             if visualise_data == 3:
                 tui.started("The orbit summary visualisation process")
-                # visual.orbits(summary)
+                visual.orbits(orbits)
                 tui.completed("The orbit summary visualisation process")
 
             # Check if the selected option from the Visualise data menu is 4
