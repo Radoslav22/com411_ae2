@@ -189,22 +189,35 @@ def run():
             # Check if the selected option from the Process data menu is 5
             if process == 5:
                 tui.started("The orbit summary process")
+                # empty dictionary
                 orbits = {}
+                # loop for record in records
                 for record in records:
+                    # check if there is no orbits
                     if record[21] != "NA":
+                        # making mean radius float
                         mean_radius = float(record[10])
+                        # empty dictionary
                         current_entity = {}
+                        # check if mean radius is lower than 100 add to category low
                         if mean_radius < 100:
                             current_category = 'low'
+                        # otherwise add to category high
                         else:
                             current_category = 'high'
+                        # check if orbits are in orbits dictionary
                         if record[21] in orbits:
+                            # adding the orbit name
                             current_entity = orbits[record[21]]
                         else:
+                            # otherwise empty
                             current_entity['low'] = []
                             current_entity['high'] = []
+                        # adding the names of the entity (eName)
                         current_entity[current_category].append(record[0])
+                        # adding in dictionary orbit the dictionary current entity
                         orbits[record[21]] = current_entity
+                # displaying the key and value of orbits dictionary
                 tui.list_categories(orbits)
                 tui.completed("The orbit summary process")
             tui.completed("Processing data")
@@ -301,7 +314,9 @@ def run():
         # Check if the selected option from the main menu is 4(Save Data)
         if operation == 4:
             tui.started("Save data operation")
-            tui.save()
+            saving_data = tui.save()
+            if saving_data == 1:
+                pass
             tui.completed("Save data operation")
 
         # Task 29: Check if the user selected the option for exiting.  If so, then do the following:
