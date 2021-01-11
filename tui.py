@@ -289,7 +289,7 @@ def list_categories(categories):
     :return: Does not return anything
     """
     for key, value in categories.items():
-        print(f"{key}:{value}")
+        print(f"{key}: {value}")
 
 
 def gravity_range():

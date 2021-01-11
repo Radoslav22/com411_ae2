@@ -41,6 +41,7 @@ def run():
             with open(file, 'r') as csv_file:
                 csv_reader = csv.reader(csv_file, delimiter=",")
                 # Loop for row in csv file append the row in list records
+                header = next(csv_reader)
                 for row in csv_reader:
                     records.append(row)
 
@@ -171,15 +172,16 @@ def run():
             if process == 4:
                 tui.started("The categorisation by entity gravity process")
                 up_low_limits = tui.gravity_range()
-                up_limit = up_low_limits[0]
-                low_limit = up_low_limits[1]
+                up_limit = float(up_low_limits[1])
+                low_limit = float(up_low_limits[0])
                 gravity_categories = {}
                 for record in records:
-                    if record[8] < low_limit:
+                    current_gravity = float(record[8])
+                    if current_gravity < low_limit:
                         gravity_categories['low'] = record[0]
-                    elif (record[8] > low_limit) and (record[8] < up_limit):
+                    elif (current_gravity > low_limit) and (current_gravity < up_limit):
                         gravity_categories['medium'] = record[0]
-                    elif record[8] > up_limit:
+                    elif current_gravity > up_limit:
                         gravity_categories['high'] = record[0]
                 tui.list_categories(gravity_categories)
                 tui.completed("The categorisation by entity gravity process")
@@ -187,14 +189,23 @@ def run():
             # Check if the selected option from the Process data menu is 5
             if process == 5:
                 tui.started("The orbit summary process")
-                orbits = tui.orbits()
-                orbit_categories = {}
+                orbits = {}
                 for record in records:
-                    if record == "orbits":
-                        # categories[planet_orbited][category]
-                        pass
-
-                # tui.list_categories(categories)
+                    if record[21] != "NA":
+                        mean_radius = float(record[10])
+                        current_entity = {}
+                        if mean_radius < 100:
+                            current_category = 'low'
+                        else:
+                            current_category = 'high'
+                        if record[21] in orbits:
+                            current_entity = orbits[record[21]]
+                        else:
+                            current_entity['low'] = []
+                            current_entity['high'] = []
+                        current_entity[current_category].append(record[0])
+                        orbits[record[21]] = current_entity
+                tui.list_categories(orbits)
                 tui.completed("The orbit summary process")
             tui.completed("Processing data")
 
@@ -260,7 +271,7 @@ def run():
             # Check if the selected option from the Visualise data menu is 2
             if visualise_data == 2:
                 tui.started("The entity gravity visualisation process")
-                # visual.entities_bar(categories)
+                visual.entities_bar(gravity_categories)
                 tui.completed("The entity gravity visualisation process")
 
             # Check if the selected option from the Visualise data menu is 3
@@ -272,7 +283,7 @@ def run():
             # Check if the selected option from the Visualise data menu is 4
             if visualise_data == 4:
                 tui.started("The gravity animation visualisation process")
-                # visual.gravity_animation(categories)
+                visual.gravity_animation(gravity_categories)
                 tui.completed("The gravity animation visualisation process")
             tui.completed("The data visualisation operation")
 

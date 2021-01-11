@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import matplotlib.animation as animation
 
 
 def entities_pie(categories):
@@ -41,7 +42,8 @@ def entities_bar(categories):
         labels.append(key)
         sizes.append(len(value))
     # title of the Bar chart
-    plt.bar(sizes, labels=labels)
+    plt.title("Low, Medium and High gravity")
+    plt.bar(labels, sizes, align='center')
     plt.show()
 
 
@@ -80,3 +82,19 @@ def gravity_animation(categories):
     :param categories: A dictionary containing "low", "medium" and "high" gravity entities
     :return: Does not return anything
     """
+
+    labels = []
+    sizes = []
+    # loop the dictionary items
+    for key, value in categories.items():
+        labels.append(key)
+        sizes.append(len(value))
+
+    fig, ax = plt.subplots()
+    ax.cla()
+    ax.plot(labels, sizes)
+
+    simple_animation = animation.FuncAnimation(labels, sizes, frames=100, interval=100)
+
+    plt.show()
+    pass
